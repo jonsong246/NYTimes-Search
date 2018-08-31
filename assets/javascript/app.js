@@ -50,13 +50,13 @@ function searchAPI(){
             if (i % 2 === 0) {
                 $('#content').append(`
                    <div class="article col-sm-12 whitebg">
-                       <h3>${i + 1} ${arr[i].headline.main}</h3><h5>${arr[i].snippet}</h5><a href="${arr[i].web_url}"><h6>${arr[i].web_url}</h6></a>
+                       <h3>${i + 1}. ${arr[i].headline.main}</h3><h5>${arr[i].snippet}</h5><a href="${arr[i].web_url}"><h6>${arr[i].web_url}</h6></a>
                    </div>
                 `)
             } else {
                 $('#content').append(`
                    <div class="article col-sm-12 graybg">
-                       <h3>${i + 1} ${arr[i].headline.main}</h3><h5>${arr[i].snippet}</h5><a href="${arr[i].web_url}"><h6>${arr[i].web_url}</h6></a>
+                       <h3>${i + 1}. ${arr[i].headline.main}</h3><h5>${arr[i].snippet}</h5><a href="${arr[i].web_url}"><h6>${arr[i].web_url}</h6></a>
                    </div>
                 `)
             }
