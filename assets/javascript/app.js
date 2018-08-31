@@ -55,7 +55,7 @@ function searchAPI(){
 
 function pullAPIParameters(){
     console.log('pulling parameters')
-    
+
     q = $('#searchTerm').val()
     page = parseInt($('#numRecords').val() / 10)
     begin_date = $('#startYear').val()
@@ -70,6 +70,15 @@ $(document).ready(function() {
         // get form data
         console.log('running search API')
         searchAPI()
+    })
+
+    $(document).on("click", "#clear", function(){
+        // clear form data and results
+        $('#searchTerm').val('')
+        $('#numRecords').val('1')
+        $('#startYear').val('')
+        $('#endYear').val('')
+        $('#content').empty()
     })
 })
 
