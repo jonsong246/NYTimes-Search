@@ -12,6 +12,7 @@ let hl = ''
 let page = '1'
 let facet_field = ''
 let facet_filter = ''
+let num = ''
 
 function buildURL(){
     let tempURL = url + `?api-key=${apikey}`
@@ -33,6 +34,7 @@ function buildURL(){
 }
 
 function searchAPI(){
+    $('#content').empty()
     var url = ``
     pullAPIParameters()
     url = buildURL()
@@ -44,14 +46,22 @@ function searchAPI(){
         console.log(results)
         let arr = results.response.docs
 
-        arr.forEach((result, index) => {
-            $('#content').append(`
-                <div class="article col-sm-12">
-                    <h3>${index + 1} ${result.headline.main}</h3><h5>${result.snippet}</h5><a href="${result.web_url}"><h6>${result.web_url}</h6></a>
-                </div>
-            `)
-            console.log(result.headline.main)
-        })
+        for (i = 0; i < num; i++) {
+            if (i % 2 === 0) {
+                $('#content').append(`
+                   <div class="article col-sm-12 whitebg">
+                       <h3>${i + 1} ${arr[i].headline.main}</h3><h5>${arr[i].snippet}</h5><a href="${arr[i].web_url}"><h6>${arr[i].web_url}</h6></a>
+                   </div>
+                `)
+            } else {
+                $('#content').append(`
+                   <div class="article col-sm-12 graybg">
+                       <h3>${i + 1} ${arr[i].headline.main}</h3><h5>${arr[i].snippet}</h5><a href="${arr[i].web_url}"><h6>${arr[i].web_url}</h6></a>
+                   </div>
+                `)
+            }
+            console.log(arr[i].headline.main)
+        }
     }).fail(function(err) {
         throw err;
     });
@@ -62,6 +72,7 @@ function pullAPIParameters(){
 
     q = $('#searchTerm').val()
     page = parseInt($('#numRecords').val() / 10)
+    num = $('#numRecords').val()
     begin_date = $('#startYear').val()
     end_date = $('#endYear').val()
 }

@@ -16,3 +16,13 @@ body {
     background-color: rgb(240, 247, 246);
     font-weight: bold;
 }
+
+.whitebg {
+   background-color: white;
+   border: 1px solid gray;
+}
+
+.graybg {
+   background-color: #f6f6f6;
+   border: 1px solid gray;
+}
