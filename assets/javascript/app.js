@@ -47,7 +47,7 @@ function searchAPI(){
         arr.forEach((result, index) => {
             $('#content').append(`
                 <div class="article col-sm-12">
-                    <h3>${index + 1} ${result.headline.main}</h3><h5>${result.snippet}</h5><a href="${result.web_url}"><h6>${result.web_url}</h6></a>
+                    <h3>${index + 1}. ${result.headline.main}</h3><h5>${result.snippet}</h5><a href="${result.web_url}"><h6>${result.web_url}</h6></a>
                 </div>
             `)
             console.log(result.headline.main)
