@@ -44,8 +44,12 @@ function searchAPI(){
         console.log(results)
         let arr = results.response.docs
 
-        arr.forEach(result => {
-            $('#content').append()
+        arr.forEach((result, index) => {
+            $('#content').append(`
+                <div class="article col-sm-12">
+                    <h3>${index + 1} ${result.headline.main}</h3><a href="${result.web_url}"><h3>${result.web_url}</h3></a>
+                </div>
+            `)
             console.log(result.headline.main)
         })
     }).fail(function(err) {
