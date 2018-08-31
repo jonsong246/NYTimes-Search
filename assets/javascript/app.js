@@ -43,6 +43,7 @@ function searchAPI(){
         let arr = results.response.docs
 
         arr.forEach(result => {
+            $('#content').append()
             console.log(result.headline.main)
         })
     }).fail(function(err) {
