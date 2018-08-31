@@ -1,6 +1,6 @@
 
 let url = 'https://api.nytimes.com/svc/search/v2/articlesearch.json'
-//&begin_date=${begin_date}&end_date=${end_date}
+
 let apikey = '896fe5f1ca604377b0fc87c58211f0ec'
 let q = 'test'
 let fq = ''
@@ -27,12 +27,14 @@ function buildURL(){
     if(end_date > 0){
         tempURL = tempURL + `&end_date=${end_date}`
     }
+
     console.log(`build url: ${tempURL}`)
     return tempURL
 }
 
 function searchAPI(){
     var url = ``
+    pullAPIParameters()
     url = buildURL()
 
     $.ajax({
@@ -50,12 +52,23 @@ function searchAPI(){
     });
 }
 
-//running here
-    console.log('running search API')
-    searchAPI()
+function pullAPIParameters(){
+    console.log('pulling parameters')
+    
+    q = $('#searchTerm').val()
+    page = parseInt($('#numRecords').val() / 10)
+    begin_date = $('#startYear').val()
+    end_date = $('#endYear').val()
+}
 
-    $(document).on("click",'.submitBtn', function(){
+//running here
+
+$(document).ready(function() {
+
+    $(document).on("click", "#search", function(){
         // get form data
+        console.log('running search API')
         searchAPI()
     })
+})
 
